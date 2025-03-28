@@ -19,6 +19,6 @@
       "html-webpack-plugin": ["./node_modules/html-webpack-plugin"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/types/global.d.ts"],
   "exclude": ["node_modules"]
 }

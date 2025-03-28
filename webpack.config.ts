@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url'
 import { dirname, resolve } from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import 'webpack-dev-server'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 interface EnvVariables {
   mode?: 'development' | 'production'
@@ -27,7 +28,13 @@ export default (env: EnvVariables) => {
         template: resolve(__dirname, 'public', 'index.html'),
       }),
       isDev && new webpack.ProgressPlugin(),
+      !isDev &&
+        new MiniCssExtractPlugin({
+          filename: 'css/[name].[contenthash]:8.css',
+          chunkFilename: 'css/[name].[contenthash:8].css',
+        }),
     ].filter(Boolean),
+
     module: {
       rules: [
         {
@@ -39,6 +46,10 @@ export default (env: EnvVariables) => {
             },
           },
           exclude: /node_modules/,
+        },
+        {
+          test: /\.s[ac]ss$/i,
+          use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         },
       ],
     },
