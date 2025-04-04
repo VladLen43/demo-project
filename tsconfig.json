@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "NodeNext",
+    "target": "es6",
+    "module": "ESNext",
+    "noImplicitAny": true,
     "jsx": "react-jsx",
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
     "esModuleInterop": true,
     "composite": true,

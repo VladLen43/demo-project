@@ -5,12 +5,12 @@ export interface BuildPaths {
   html: string
   output: string
   //   src: any
-  //   public: any
+  public: string
 }
 export type BuildMode = 'development' | 'none' | 'production'
 export interface BuildTypes {
   mode?: BuildMode
-  paths?: BuildPaths
+  paths: BuildPaths
   isDev?: boolean
   port?: number
   analyzer?: boolean

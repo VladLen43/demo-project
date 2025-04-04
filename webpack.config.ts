@@ -20,6 +20,7 @@ export default (env: EnvVariables) => {
     output: path.resolve(__dirname, 'dist'),
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     html: path.resolve(__dirname, 'public', 'index.html'),
+    public: path.resolve(__dirname, 'public'),
     // src: resolve(__dirname, 'src'),
     // public: resolve(__dirname, 'public'),
   }

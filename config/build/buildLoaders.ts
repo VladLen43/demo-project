@@ -1,5 +1,6 @@
 import { ModuleOptions } from 'webpack'
 import { BuildTypes } from './types/types'
+import ReactRefreshTypeScript from 'react-refresh-typescript'
 
 export const buildLoaders = ({ mode }: BuildTypes): ModuleOptions['rules'] => {
   const isDev = mode === 'development'
@@ -10,6 +11,9 @@ export const buildLoaders = ({ mode }: BuildTypes): ModuleOptions['rules'] => {
       loader: 'ts-loader',
       options: {
         transpileOnly: true,
+        getCustomTransformers: () => ({
+          before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+        }),
       },
     },
     exclude: /node_modules/,
