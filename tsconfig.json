@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ESNext",
     "module": "NodeNext",
     "jsx": "react-jsx",
     "moduleResolution": "nodenext",
@@ -12,9 +12,9 @@
     "skipLibCheck": true,
     "outDir": "./dist",
     "rootDir": "./src",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["./src/*"],
       "#config/*": ["config/*"],
       "html-webpack-plugin": ["./node_modules/html-webpack-plugin"]
     }
