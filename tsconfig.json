@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "ESNext",
+    "noImplicitAny": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "composite": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "#config/*": ["config/*"],
+      "html-webpack-plugin": ["./node_modules/html-webpack-plugin"]
+    }
+  },
+  "include": ["src", "src/types/global.d.ts"],
+  "exclude": ["node_modules"]
+}
