@@ -1,23 +1,26 @@
 import { ModuleOptions } from 'webpack'
 import { BuildTypes } from './types/types'
-import ReactRefreshTypeScript from 'react-refresh-typescript'
+import { buildBabelLoader } from './babel/buildBabelLoader.ts'
+//import ReactRefreshTypeScript from 'react-refresh-typescript'
 
 export const buildLoaders = ({ mode }: BuildTypes): ModuleOptions['rules'] => {
   const isDev = mode === 'development'
 
-  const tsLoader = {
-    test: /\.tsx?$/,
-    use: {
-      loader: 'ts-loader',
-      options: {
-        transpileOnly: true,
-        getCustomTransformers: () => ({
-          before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
-        }),
-      },
-    },
-    exclude: /node_modules/,
-  }
+  // const tsLoader = {
+  //   test: /\.tsx?$/,
+  //   use: {
+  //     loader: 'ts-loader',
+  //     options: {
+  //       transpileOnly: true,
+  //       getCustomTransformers: () => ({
+  //         before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+  //       }),
+  //     },
+  //   },
+  //   exclude: /node_modules/,
+  // }
+
+  const babelLoader = buildBabelLoader(isDev)
 
   const scssLoader = {
     test: /\.module\.(scss|sass)$/,
@@ -67,5 +70,5 @@ export const buildLoaders = ({ mode }: BuildTypes): ModuleOptions['rules'] => {
     ],
   }
 
-  return [assetLoader, svgrLoader, scssLoader, tsLoader]
+  return [assetLoader, svgrLoader, scssLoader, babelLoader]
 }
